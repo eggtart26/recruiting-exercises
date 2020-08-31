@@ -78,6 +78,30 @@ describe("Testing Inventory Allocator class", () => {
             expect(inventoryAllocator.createShipment()).to.deep.equal(result);
           });
 
+        it("Should return correct createShipment result, case#3 enought inventories in multiple warehouses, return []", () => {
+            inventoryAllocator.order = { apple: 20 };
+            const result = [ { "owd": { "apple": 5} },
+            { "dm": { "apple": 5 } },
+            { "sfo": { "apple": 5 } },
+            { "bai": { "apple": 5} },
+          ]
+            expect(inventoryAllocator.createShipment()).to.deep.equal(result);
+          });
+
+        it("Should return correct createShipment result, case#4 not enought inventories in multiple warehouses, return []", () => {
+            inventoryAllocator.order = { apple: 21 };
+            const result = []
+            expect(inventoryAllocator.createShipment()).to.deep.equal(result);
+          });
+    
+        it("Should return correct createShipment result, case#5 not enought inventories in multiple warehouses, return []", () => {
+            inventoryAllocator.order = { apple: 1, mango: 2, peach: 3, };
+            const result = []
+            expect(inventoryAllocator.createShipment()).to.deep.equal(result);
+          });
+
+
+
     });
 
 
