@@ -78,7 +78,7 @@ describe("Testing Inventory Allocator class", () => {
             expect(inventoryAllocator.createShipment()).to.deep.equal(result);
           });
 
-        it("Should return correct createShipment result, case#3 enought inventories in multiple warehouses, return []", () => {
+        it("Should return correct createShipment result, case#3 enought inventories in multiple warehouses, return result", () => {
             inventoryAllocator.order = { apple: 20 };
             const result = [ { "owd": { "apple": 5} },
             { "dm": { "apple": 5 } },
