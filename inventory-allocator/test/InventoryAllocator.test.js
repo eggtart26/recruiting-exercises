@@ -110,11 +110,9 @@ describe("Testing Inventory Allocator class", () => {
           });
 
         it("Should be cheapest shipment", () => {
-            inventoryAllocator.order = { mango:1, apple: 5 };
+            inventoryAllocator.order = { mango: 1, apple: 5 };
             var orderLen = Object.keys(inventoryAllocator.order).length
-            console.log(orderLen, "orderLen")
             var shipmentLen = Object(inventoryAllocator.createShipment()).length
-            console.log(shipmentLen, "shipmentLen")
             expect(shipmentLen).to.deep.equal(orderLen);
           });
 
@@ -137,7 +135,7 @@ describe("Testing Inventory Allocator class", () => {
           });
     
         it("Should return true if it is cheapestShipment", () => {
-            inventoryAllocator.order = { mango:1, apple: 5 };
+            inventoryAllocator.order = { mango: 1, apple: 5 };
             expect(inventoryAllocator.cheapestShipment()).to.deep.equal(true);
           });
         
