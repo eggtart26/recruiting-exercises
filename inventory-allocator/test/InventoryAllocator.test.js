@@ -24,6 +24,11 @@ describe("Testing Inventory Allocator class", () => {
         expect(typeof inventoryAllocator.createShipment).to.equal("function");
       });
 
+    it("Should initialize properties", () => {
+        expect(inventoryAllocator.warehouses).to.deep.equal([]);
+        expect(inventoryAllocator.order).to.deep.equal({});
+      });
+
 
 
 
@@ -48,6 +53,32 @@ describe("Testing Inventory Allocator class", () => {
         });
     })
 
+
+
+    describe("Testing createShipment methods", () => {
+
+        before(() => {
+          const order = {};
+          inventoryAllocator = new InventoryAllocator(warehouses, order);
+        });
+
+        it("Should handle an empty order", () => {
+            expect(inventoryAllocator.createShipment()).to.be.empty;
+          });
+        
+        it("Should return correct createShipment result, case#1 ship from single warehouses", () => {
+            inventoryAllocator.order = { apple: 1 };
+            const result = [{ owd: { apple: 1 } }]
+            expect(inventoryAllocator.createShipment()).to.deep.equal(result);
+          });
+    
+        it("Should return correct createShipment result, case#2 ship from multiple warehouses", () => {
+            inventoryAllocator.order = { apple: 10 };
+            const result = [ { owd: { apple: 5 } },{ dm: { apple: 5 } },]
+            expect(inventoryAllocator.createShipment()).to.deep.equal(result);
+          });
+
+    });
 
 
 
