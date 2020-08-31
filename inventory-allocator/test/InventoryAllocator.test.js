@@ -100,7 +100,20 @@ describe("Testing Inventory Allocator class", () => {
             expect(inventoryAllocator.createShipment()).to.deep.equal(result);
           });
 
+        it("Should return correct createShipment result, case#6 can not find item in warehouse, return []", () => {
+            inventoryAllocator.order = { banana: 1 };
+            const result = []
+            expect(inventoryAllocator.createShipment()).to.deep.equal(result);
+          });
 
+        it("Should be cheapest shipment", () => {
+            inventoryAllocator.order = { mango:1, apple: 5 };
+            var orderLen = Object.keys(inventoryAllocator.order).length
+            console.log(orderLen, "orderLen")
+            var shipmentLen = Object(inventoryAllocator.createShipment()).length
+            console.log(shipmentLen, "shipmentLen")
+            expect(shipmentLen).to.deep.equal(orderLen);
+          });
 
     });
 
