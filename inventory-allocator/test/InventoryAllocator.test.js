@@ -10,9 +10,17 @@ describe("Testing Inventory Allocator class", () => {
       const order = {};
       inventoryAllocator = new InventoryAllocator(inventory, order);
     });
-    
+
     it("Should exist class inventoryAllocator", () => {
       expect(inventoryAllocator).to.exist;
     });
+
+    it("Should have methods checkInventoryExist", () => {
+        expect(typeof inventoryAllocator.checkInventoryExist).to.equal("function");
+      });
+      
+    it("Should have methods createShipment", () => {
+        expect(typeof inventoryAllocator.createShipment).to.equal("function");
+      });
 
 });

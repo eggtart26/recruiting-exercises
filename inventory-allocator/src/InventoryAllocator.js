@@ -1,9 +1,17 @@
 class InventoryAllocator {
-    constructor() {
-
+    constructor(warehouses, order) {
+        this.warehouses = warehouses.map(inventory => {
+            return { ...inventory };
+        });
+        this.order = { ...order };
     }
 
+    checkInventoryExist(input, warehouses) {
+        return warehouses[input] !== undefined;
+    }
 
+    createShipment() {
+    }
     
 }
 
