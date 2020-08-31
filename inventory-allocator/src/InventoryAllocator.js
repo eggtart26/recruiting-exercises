@@ -39,7 +39,11 @@ class InventoryAllocator {
     }
 
     cheapestShipment() {
-        
+        const newOrder = { ...this.order };
+        let shipFormOneLocation = Object.keys(newOrder).length === Object(this.createShipment(newOrder)).length
+        if (this.checkInventoryExist && shipFormOneLocation) {
+            return true;
+        }
     }
     
 }

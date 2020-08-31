@@ -55,6 +55,9 @@ describe("Testing Inventory Allocator class", () => {
 
 
 
+
+
+
     describe("Testing createShipment methods", () => {
 
         before(() => {
@@ -115,6 +118,29 @@ describe("Testing Inventory Allocator class", () => {
             expect(shipmentLen).to.deep.equal(orderLen);
           });
 
+    });
+
+
+
+
+
+
+    describe("Testing cheapestShipment methods", () => {
+
+        before(() => {
+          const order = {};
+          inventoryAllocator = new InventoryAllocator(warehouses, order);
+        });
+    
+        it("Should have methods cheapestShipment", () => {
+            expect(typeof inventoryAllocator.cheapestShipment).to.equal("function");
+          });
+    
+        it("Should return true if it is cheapestShipment", () => {
+            inventoryAllocator.order = { mango:1, apple: 5 };
+            expect(inventoryAllocator.cheapestShipment()).to.deep.equal(true);
+          });
+        
     });
 
 
